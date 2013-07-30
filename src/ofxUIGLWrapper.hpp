@@ -59,13 +59,14 @@ public:
 
 #define NN ofxUIGLWrapper
 namespace NN{
-/**
-   if this is NULL, then we have no fill.
-   if this is non-null, use the color.
-*/
-static ofxUIColor *color;
-static bool bFill;
-static unsigned int rectMode;
+class ofxUIGLStyle {
+public:
+    ofxUIGLStyle();
+    bool            bFill;
+    ofxUIColor      fillColor;
+    int 			rectMode;
+    float           lineWidth;
+};
 };
 
 

@@ -159,6 +159,12 @@ void ofxUIImage::resize(int w,int h){
 	//TODO
 }
 
+ofxUIGLStyle::ofxUIGLStyle() {
+	bFill = true;
+	rectMode = 0;
+	lineWidth = 1;
+}
+
 void ofxUISetRectMode(unsigned int mode){
 	NN::rectMode = mode;
 }
