@@ -5,6 +5,7 @@
    for implementations sitting on just OpenGL
 */
 
+
 class ofxUIVec2f{
 public:
 	ofxUIVec2f();
@@ -15,9 +16,13 @@ public:
 
 class ofxUIColor{
 public:
+	ofxUIColor();
+	ofxUIColor(int,int);
+	ofxUIColor(int,int,int,int);
 	float r;
 	float g;
 	float b;
+	float a;
 };
 
 class ofxUIFont{
@@ -29,4 +34,5 @@ class ofxUIFont{
 
 void ofxUIDrawRect(float x,float y, float w, float h);
 
-
+void ofxUIPushStyle();
+void ofxUIPopStyle();
