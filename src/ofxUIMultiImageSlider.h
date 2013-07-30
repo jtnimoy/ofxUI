@@ -107,16 +107,16 @@ public:
             extension = _pathURL.substr(found);
         }
         
-        track = new ofImage();         //back
+        track = new ofxUIImage();         //back
         track->loadImage(coreURL+"track"+extension);
         
-        progress = new ofImage();      //fill
+        progress = new ofxUIImage();      //fill
         progress->loadImage(coreURL+"progress"+extension);        
         
-        handle = new ofImage();        //handle
+        handle = new ofxUIImage();        //handle
         handle->loadImage(coreURL+"handle"+extension);
         
-        handleDown = new ofImage();    //handleOver State                        
+        handleDown = new ofxUIImage();    //handleOver State                        
         handleDown->loadImage(coreURL+"handledown"+extension);        
         
         if(kind == OFX_UI_WIDGET_MULTIIMAGESLIDER_H)
@@ -179,7 +179,7 @@ public:
     {
         if(draw_outline)
         {
-            ofNoFill();
+            ofxUINoFill();
             ofxUISetColor(color_outline); 
             rect->draw(); 
         }
@@ -314,10 +314,10 @@ public:
     
     
 protected:    //inherited: ofxUIRectangle *rect; ofxUIWidget *parent; 
-    ofImage *track;         //back
-    ofImage *progress;      //fill
-    ofImage *handle;        //handle
-    ofImage *handleDown;    //handleOver State    
+    ofxUIImage *track;         //back
+    ofxUIImage *progress;      //fill
+    ofxUIImage *handle;        //handle
+    ofxUIImage *handleDown;    //handleOver State    
     int handleHalfWidth; 
     int handleHalfHeight; 
     ofxUIRectangle *imageRect;
