@@ -114,7 +114,7 @@ public:
         return MAX(y, y + height);  // - height
     }    
 
-    bool inside(ofPoint p)
+    bool inside(ofxUIVec2f p)
     {
         if(parent !=NULL)
         {
