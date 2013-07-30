@@ -1,5 +1,9 @@
 #include "ofxUIGLWrapper.h"
 
+
+ofxUIColor NN::color = ofxUIColor(255,255);
+bool NN::bFill = true;
+
 ofxUIVec2f::ofxUIVec2f(){
 	x=0;
 	y=0;
@@ -36,10 +40,29 @@ ofxUIColor::ofxUIColor(int _r,int _g,int _b,int _a){
 	a=_a;
 }
 
+void ofxUIColor::copy(ofxUIColor that){
+	r = that.r;
+	g = that.g;
+	b = that.b;
+	a = that.a;
+}
+
+
 void ofxUIPushStyle(){
-	
+	//TODO
 }
 
 void ofxUIPopStyle(){
-	
+	//TODO
 }
+
+void ofxUIFill(){
+	NN::bFill = true;
+}
+
+void ofxUISetColor(ofxUIColor c){
+	color.copy(c);
+}
+
+//this sticks to bottom of the file
+#undef NN
