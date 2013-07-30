@@ -126,7 +126,7 @@ public:
         {
             ofxUIFill();
             ofxUISetColor(color_fill);
-			font->drawString(label, floor(rect->getX())+xOffset, floor(rect->getY()+rect->getHeight())+yOffset); 
+			font->drawString(label, std::floor(rect->getX())+xOffset, std::floor(rect->getY()+rect->getHeight())+yOffset); 
         }
 	}
 	
@@ -136,7 +136,7 @@ public:
         {
             ofxUIFill(); 
             ofxUISetColor(color_fill_highlight); 
-			font->drawString(label, floor(rect->getX())+xOffset, floor(rect->getY()+rect->getHeight())+yOffset); 
+			font->drawString(label, std::floor(rect->getX())+xOffset, std::floor(rect->getY()+rect->getHeight())+yOffset); 
         }        
 	}	
             
@@ -144,19 +144,19 @@ public:
     {      
         ofxUIFill(); 
         ofxUISetColor(color_back);     
-        font->drawString(label, floor(rect->getX())+1+xOffset, floor(rect->getY()+rect->getHeight())+1+yOffset);
+        font->drawString(label, std::floor(rect->getX())+1+xOffset, std::floor(rect->getY()+rect->getHeight())+1+yOffset);
     }
     
 	void drawString(float x, float y, string _string)
 	{
-        font->drawString(_string, floor(x), floor(y));
+        font->drawString(_string, std::floor(x), std::floor(y));
 	}
     
     void drawStringShadow(float x, float y, string _string)
 	{
         ofxUIFill();
         ofxUISetColor(color_back);     
-        font->drawString(_string, floor(x)+1, floor(y)+1);
+        font->drawString(_string, std::floor(x)+1, std::floor(y)+1);
 	}
     
 	float getStringWidth(string s)

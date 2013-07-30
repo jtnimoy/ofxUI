@@ -180,7 +180,7 @@ public:
     {
         if(draw_outline)
         {
-            ofNoFill();
+            ofxUINoFill();
             ofxUISetColor(color_outline); 
             rect->draw(); 
         }
@@ -190,7 +190,7 @@ public:
     {
         if(draw_outline_highlight)
         {
-            ofNoFill();
+            ofxUINoFill();
             ofxUISetColor(color_outline_highlight); 
             rect->draw();          
         }
@@ -304,22 +304,22 @@ public:
 		{
 			switch (key) 
 			{
-				case OF_KEY_RIGHT:
+				case OFX_UI_KEY_RIGHT:
 					setValue(getScaledValue()+increment); 
 					triggerEvent(this); 
 					break;
                     
-				case OF_KEY_UP:
+				case OFX_UI_KEY_UP:
 					setValue(getScaledValue()+increment); 
 					triggerEvent(this); 
 					break;
 					
-				case OF_KEY_LEFT:
+				case OFX_UI_KEY_LEFT:
 					setValue(getScaledValue()-increment); 					
 					triggerEvent(this); 
 					break;
                     
-				case OF_KEY_DOWN:
+				case OFX_UI_KEY_DOWN:
 					setValue(getScaledValue()-increment); 					
 					triggerEvent(this); 
 					break;					
