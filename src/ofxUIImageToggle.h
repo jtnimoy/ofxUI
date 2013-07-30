@@ -132,7 +132,7 @@ public:
     {
         if(draw_outline_highlight)
         {
-            ofNoFill();
+            ofxUINoFill();
             ofxUISetColor(color_outline_highlight);
             img->draw(rect->getX(), rect->getY(), rect->getWidth(), rect->getHeight());
         }

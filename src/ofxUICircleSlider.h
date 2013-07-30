@@ -119,7 +119,7 @@ public:
     {
         if(draw_outline)
         {
-            ofNoFill();
+            ofxUINoFill();
             ofxUISetColor(color_outline); 
             ofxUICircle(rect->getX()+rect->getHalfWidth(), rect->getY()+rect->getHalfHeight(), rect->getHalfWidth());
         } 
@@ -151,7 +151,7 @@ public:
     {
         if(draw_outline_highlight)
         {
-            ofNoFill();
+            ofxUINoFill();
             ofxUISetColor(color_outline_highlight); 
             ofxUICircle(rect->getX()+rect->getHalfWidth(), rect->getY()+rect->getHalfHeight(), rect->getHalfWidth());
             if(!draw_fill_highlight)
@@ -280,7 +280,7 @@ public:
     
     virtual bool isHit(float x, float y)
     {
-        if(visible && ofDist(x, y, rect->getX()+rect->getHalfWidth(), rect->getY()+rect->getHalfHeight()) < rect->getHalfWidth())
+        if(visible && ofxUIDist(x, y, rect->getX()+rect->getHalfWidth(), rect->getY()+rect->getHalfHeight()) < rect->getHalfWidth())
         {
             return true;
         }

@@ -92,7 +92,7 @@ public:
     {
         ofxUIPushStyle();
         
-        ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+        ofxUIEnableBlendMode(OFX_UI_BLENDMODE_ALPHA);
         
         drawPadded();
         drawPaddedOutline();

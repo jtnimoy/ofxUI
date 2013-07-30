@@ -214,22 +214,22 @@ public:
         sampledColor = image->getColor(value.x*(image->getWidth()-1), value.y*(image->getHeight()-1));          //why one? well because if we get to the end, we sample the beginning...
     }
     
-    ofColor& getColor()
+    ofxUIColor& getColor()
     {
         return sampledColor; 
     }
     
-    void setColor(ofColor _sampledColor)
+    void setColor(ofxUIColor _sampledColor)
     {
         sampledColor = _sampledColor; 
     }
     
-    ofPoint getValue()
+    ofxUIPoint getValue()
     {
         return value;
     }
     
-    void setValue(ofPoint _value)
+    void setValue(ofxUIPoint _value)
     {
         value = _value; 
         if(value.x > 1.0)
@@ -258,8 +258,8 @@ public:
     }
 
 protected: 
-    ofColor sampledColor; 
-	ofPoint value;     
+    ofxUIColor sampledColor; 
+	ofxUIPoint value;     
     float squareSize; 
 }; 
 

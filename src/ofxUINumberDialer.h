@@ -144,7 +144,7 @@ public:
     {
         if(useReference)
         {
-            setTextString(numToString(abs(*value), precision, numOfPrecisionZones, '0'));
+            setTextString(numToString(std::abs(*value), precision, numOfPrecisionZones, '0'));
         }
     }
     
@@ -200,7 +200,7 @@ public:
     
     void calculatePrecisionZone()
     {
-        currentPrecisionZone = ceil(ofxUIMap(hitPoint.x,rect->getX(),rect->getX()+rect->getWidth(),-1, displaystring.size()-1, true));
+        currentPrecisionZone = std::ceil(ofxUIMap(hitPoint.x,rect->getX(),rect->getX()+rect->getWidth(),-1, displaystring.size()-1, true));
         if(currentPrecisionZone == 0)
         {
             zoneMultiplier = powf(10.0, numOfPrecisionZones-precision-hasPeriod);
@@ -240,7 +240,7 @@ public:
             _value = min; 
         }            
         *value = _value; 
-        setTextString(numToString(abs(*value), precision, numOfPrecisionZones, '0'));         
+        setTextString(numToString(std::abs(*value), precision, numOfPrecisionZones, '0'));         
     }
     
     void mouseMoved(int x, int y ) 
@@ -248,7 +248,7 @@ public:
         if(rect->inside(x, y))
         {
             state = OFX_UI_STATE_OVER;
-            hitPoint = ofPoint(x,y);
+            hitPoint = ofxUIPoint(x,y);
             calculatePrecisionZone();
             
         }
@@ -272,8 +272,8 @@ public:
             {
                 *value = min; 
             }                  
-            hitPoint = ofPoint(x,y); 
-            setTextString(numToString(abs(*value), precision, numOfPrecisionZones, '0'));     
+            hitPoint = ofxUIPoint(x,y); 
+            setTextString(numToString(std::abs(*value), precision, numOfPrecisionZones, '0'));     
 			triggerEvent(this);             
             state = OFX_UI_STATE_DOWN;         
         }    
@@ -289,7 +289,7 @@ public:
         if(rect->inside(x, y))
         {
             hit = true; 
-            hitPoint = ofPoint(x,y); 
+            hitPoint = ofxUIPoint(x,y); 
             calculatePrecisionZone();             
             state = OFX_UI_STATE_DOWN;     
 			triggerEvent(this);            
@@ -326,7 +326,7 @@ public:
         {
             switch (key) 
             {
-                case OF_KEY_RIGHT:
+                case OFX_UI_KEY_RIGHT:
                     *value += zoneMultiplier; 
                     if(*value > max)
                     {
@@ -337,11 +337,11 @@ public:
                         *value = min; 
                     }            
                     
-                    setTextString(numToString(abs(*value), precision, numOfPrecisionZones, '0'));     
+                    setTextString(numToString(std::abs(*value), precision, numOfPrecisionZones, '0'));     
                     triggerEvent(this); 
                     break;
                     
-                case OF_KEY_UP:
+                case OFX_UI_KEY_UP:
                     *value += zoneMultiplier; 
                     if(*value > max)
                     {
@@ -352,11 +352,11 @@ public:
                         *value = min; 
                     }     
                     
-                    setTextString(numToString(abs(*value), precision, numOfPrecisionZones, '0'));     
+                    setTextString(numToString(std::abs(*value), precision, numOfPrecisionZones, '0'));     
                     triggerEvent(this); 
                     break;
                     
-                case OF_KEY_LEFT:
+                case OFX_UI_KEY_LEFT:
                     *value -= zoneMultiplier; 
                     if(*value > max)
                     {
@@ -367,11 +367,11 @@ public:
                         *value = min; 
                     }     
                     
-                    setTextString(numToString(abs(*value), precision, numOfPrecisionZones, '0'));     
+                    setTextString(numToString(std::abs(*value), precision, numOfPrecisionZones, '0'));     
                     triggerEvent(this); 
                     break;
                     
-                case OF_KEY_DOWN:
+                case OFX_UI_KEY_DOWN:
                     *value -= zoneMultiplier; 
                     if(*value > max)
                     {
@@ -382,7 +382,7 @@ public:
                         *value = min; 
                     }      
                     
-                    setTextString(numToString(abs(*value), precision, numOfPrecisionZones, '0'));     
+                    setTextString(numToString(std::abs(*value), precision, numOfPrecisionZones, '0'));     
                     triggerEvent(this); 
                     break;					
                     
@@ -488,7 +488,7 @@ public:
  		
 		paddedRect->height = rect->height+padding*2.0; 
 		paddedRect->width = rect->width+padding*2.0;         
-        setTextString(numToString(abs(*value), precision, numOfPrecisionZones, '0'));
+        setTextString(numToString(std::abs(*value), precision, numOfPrecisionZones, '0'));
 	}	
     
     bool isDraggable()
@@ -527,7 +527,7 @@ protected:    //inherited: ofxUIRectangle *rect; ofxUIWidget *parent;
 	float *value;  
     bool useReference;     
 	float max, min; 
-    ofPoint hitPoint; 
+    ofxUIPoint hitPoint; 
     int numOfPrecisionZones;
     int currentPrecisionZone;
     int hasPeriod; 

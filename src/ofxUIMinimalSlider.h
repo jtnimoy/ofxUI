@@ -167,7 +167,7 @@ public:
     {
         if(draw_outline_highlight && showValue)
         {
-            ofNoFill();
+            ofxUINoFill();
             ofxUISetColor(color_outline_highlight); 
             rect->draw();                      
             if(!draw_fill_highlight)

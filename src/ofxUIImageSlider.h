@@ -205,7 +205,7 @@ public:
     {
         if(draw_outline)
         {
-            ofNoFill();
+            ofxUINoFill();
             ofxUISetColor(color_outline); 
             rect->draw(); 
         }

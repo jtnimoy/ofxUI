@@ -66,8 +66,8 @@ public:
     {
         if(draw_back)
         {
-            ofFill();
-            ofSetColor(color_back);
+            ofxUIFill();
+            ofxUISetColor(color_back);
             rect->draw();
         }
     }
@@ -78,14 +78,14 @@ public:
         {
             if(drawShadow)
             {
-                ofSetColor(color_back);
+                ofxUISetColor(color_back);
                 for(unsigned int i = 0; i < textLines.size(); i++)
                 {
                     label->drawStringShadow(rect->getX(), rect->getY()+(lineHeight+lineSpaceSize)*(i+1)-lineSpaceSize, textLines[i]);
                 }
             }
             
-            ofSetColor(color_fill);
+            ofxUISetColor(color_fill);
             for(unsigned int i = 0; i < textLines.size(); i++)
             {
                 label->drawString(rect->getX(), rect->getY()+(lineHeight+lineSpaceSize)*(i+1)-lineSpaceSize, textLines[i]);
@@ -121,7 +121,7 @@ public:
         lineHeight = label->getStringHeight("1");
         lineSpaceSize = padding*2;
         
-        offsetY = floor(padding*.125);
+        offsetY = std::floor(padding*.125);
         
         if(label->getStringWidth(textstring) <= rectWidthLimit)
         {
@@ -192,7 +192,7 @@ public:
         
         if(overheight)
         {
-            rect->setHeight(MAX(rect->getHeight(),(lineHeight+lineSpaceSize)*textLines.size()-lineSpaceSize));
+            rect->setHeight(MAX(rect->getHeight(),(float)(lineHeight+lineSpaceSize)*textLines.size()-lineSpaceSize));
         }
     }
 

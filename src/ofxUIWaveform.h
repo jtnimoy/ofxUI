@@ -86,7 +86,7 @@ public:
     {
         if(draw_fill)
         {			
-			ofNoFill(); 
+			ofxUINoFill(); 
 			if(draw_fill_highlight)
 			{
 				ofxUISetColor(color_fill_highlight); 
@@ -97,17 +97,17 @@ public:
 			}
             if(buffer != NULL)
             {
-                ofPushMatrix(); 
-                ofTranslate(rect->getX(), rect->getY()+scale, 0);
-                ofSetLineWidth(1.5); 
-                ofBeginShape();		
+                ofxUIPushMatrix(); 
+                ofxUITranslate(rect->getX(), rect->getY()+scale, 0);
+                ofxUISetLineWidth(1.5); 
+                ofxUIBeginShape();		
                 for (int i = 0; i < bufferSize; i++)
                 {				
-                    ofVertex(inc*(float)i, ofxUIMap(buffer[i], min, max, -scale, scale, true)); 
+                    ofxUIVertex(inc*(float)i, ofxUIMap(buffer[i], min, max, -scale, scale, true)); 
                 }
-                ofEndShape();
-                ofSetLineWidth(1); 
-                ofPopMatrix(); 
+                ofxUIEndShape();
+                ofxUISetLineWidth(1); 
+                ofxUIPopMatrix(); 
             }
         }
     }
@@ -137,9 +137,9 @@ public:
         return min;
     }
     
-    ofVec2f getMaxAndMind()
+    ofxUIVec2f getMaxAndMind()
     {
-        return ofVec2f(max, min);
+        return ofxUIVec2f(max, min);
     }
     
     void setMaxAndMin(float _max, float _min)

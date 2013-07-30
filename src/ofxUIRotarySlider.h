@@ -165,22 +165,22 @@ public:
     {
         if(draw_outline)
         {
-            ofNoFill();
+            ofxUINoFill();
             ofxUISetColor(color_outline); 
-            ofSetLineWidth(2.0);
+            ofxUISetLineWidth(2.0);
             drawArcStrip(1.0); 
-            ofSetLineWidth(1.0);            
+            ofxUISetLineWidth(1.0);            
         }
     }
     virtual void drawOutlineHighlight()
     {
         if(draw_outline_highlight)
         {
-            ofNoFill();
+            ofxUINoFill();
             ofxUISetColor(color_outline_highlight); 
-            ofSetLineWidth(2.0);
+            ofxUISetLineWidth(2.0);
             drawArcStrip(1.0); 
-            ofSetLineWidth(1.0);            
+            ofxUISetLineWidth(1.0);            
         }
 	}	
     
@@ -254,22 +254,22 @@ public:
 		{
 			switch (key) 
 			{
-				case OF_KEY_RIGHT:
+				case OFX_UI_KEY_RIGHT:
 					setValue(getScaledValue()+increment); 
 					triggerEvent(this); 
 					break;
                     
-				case OF_KEY_UP:
+				case OFX_UI_KEY_UP:
 					setValue(getScaledValue()+increment); 
 					triggerEvent(this); 
 					break;
 					
-				case OF_KEY_LEFT:
+				case OFX_UI_KEY_LEFT:
 					setValue(getScaledValue()-increment); 					
 					triggerEvent(this); 
 					break;
                     
-				case OF_KEY_DOWN:
+				case OFX_UI_KEY_DOWN:
 					setValue(getScaledValue()-increment); 					
 					triggerEvent(this); 
 					break;					
@@ -284,48 +284,48 @@ public:
     {
         float theta = ofxUIMap(percent, 0, 1, 0, 360.0, true); 
         
-        ofPushMatrix(); 
-        ofTranslate(rect->getX(),rect->getY()); 
+        ofxUIPushMatrix(); 
+        ofxUITranslate(rect->getX(),rect->getY()); 
 
-        ofBeginShape(); 
+        ofxUIBeginShape(); 
 
         {
-            float x = sin(-ofDegToRad(0)); 
-            float y = cos(-ofDegToRad(0));         
-            ofVertex(center.x+outerRadius*x,center.y+outerRadius*y); 
+            float x = std::sin(-ofxUIDegToRad(0)); 
+            float y = std::cos(-ofxUIDegToRad(0));         
+            ofxUIVertex(center.x+outerRadius*x,center.y+outerRadius*y); 
         }
         
         for(int i = 0; i <= theta; i+=10)
         {
-            float x = sin(-ofDegToRad(i)); 
-            float y = cos(-ofDegToRad(i)); 
+            float x = std::sin(-ofxUIDegToRad(i)); 
+            float y = std::cos(-ofxUIDegToRad(i)); 
             
-            ofVertex(center.x+outerRadius*x,center.y+outerRadius*y); 
+            ofxUIVertex(center.x+outerRadius*x,center.y+outerRadius*y); 
         }
         
         {
-            float x = sin(-ofDegToRad(theta)); 
-            float y = cos(-ofDegToRad(theta));         
-            ofVertex(center.x+outerRadius*x,center.y+outerRadius*y); 
-            ofVertex(center.x+innerRadius*x,center.y+innerRadius*y); 
+            float x = std::sin(-ofxUIDegToRad(theta)); 
+            float y = std::cos(-ofxUIDegToRad(theta));         
+            ofxUIVertex(center.x+outerRadius*x,center.y+outerRadius*y); 
+            ofxUIVertex(center.x+innerRadius*x,center.y+innerRadius*y); 
         }
         
         for(int i = theta; i >= 0; i-=10)
         {
-            float x = sin(-ofDegToRad(i)); 
-            float y = cos(-ofDegToRad(i)); 
+            float x = std::sin(-ofxUIDegToRad(i)); 
+            float y = std::cos(-ofxUIDegToRad(i)); 
             
-            ofVertex(center.x+innerRadius*x,center.y+innerRadius*y); 
+            ofxUIVertex(center.x+innerRadius*x,center.y+innerRadius*y); 
         }
         
         {
-            float x = sin(-ofDegToRad(0)); 
-            float y = cos(-ofDegToRad(0));         
-            ofVertex(center.x+innerRadius*x,center.y+innerRadius*y); 
+            float x = std::sin(-ofxUIDegToRad(0)); 
+            float y = std::cos(-ofxUIDegToRad(0));         
+            ofxUIVertex(center.x+innerRadius*x,center.y+innerRadius*y); 
         }
                 
-        ofEndShape(); 
-        ofPopMatrix();         
+        ofxUIEndShape(); 
+        ofxUIPopMatrix();         
     }
     
     void setIncrement(float _increment)
@@ -336,10 +336,10 @@ public:
 	void input(float x, float y)
 	{
         hitPoint = ofxUIVec2f(x,y);         
-        ofVec2f mappedHitPoint = hitPoint; 
-        mappedHitPoint -= ofVec2f(rect->getX()+center.x, rect->getY()+center.y);         
+        ofxUIVec2f mappedHitPoint = hitPoint; 
+        mappedHitPoint -= ofxUIVec2f(rect->getX()+center.x, rect->getY()+center.y);         
         
-        ofVec2f cVector = center-homePoint;                 
+        ofxUIVec2f cVector = center-homePoint;                 
         value = ofxUIMap(cVector.angle(mappedHitPoint), -180, 180, 0, 1.0, true); 
         
         if(value > 1.0)
@@ -477,9 +477,9 @@ public:
         return min;
     }
     
-    ofVec2f getMaxAndMind()
+    ofxUIVec2f getMaxAndMind()
     {
-        return ofVec2f(max, min);
+        return ofxUIVec2f(max, min);
     }
     
     void setMaxAndMin(float _max, float _min)
@@ -496,7 +496,7 @@ public:
     
     virtual bool isHit(float x, float y)
     {
-        float d = ofDist(x, y, rect->getX()+rect->getHalfWidth(), rect->getY()+rect->getHalfHeight()); 
+        float d = ofxUIDist(x, y, rect->getX()+rect->getHalfWidth(), rect->getY()+rect->getHalfHeight()); 
         if(visible &&  d < outerRadius && d > innerRadius)
         {
             return true;

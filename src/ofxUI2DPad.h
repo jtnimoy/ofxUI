@@ -159,8 +159,8 @@ public:
 		label->setRectParent(rect);         
         label->setEmbedded(true);
         
-        float horizontalRange = abs(rangeX.x - rangeX.y);
-        float verticalRange = abs(rangeY.x - rangeY.y);
+        float horizontalRange = std::abs(rangeX.x - rangeX.y);
+        float verticalRange = std::abs(rangeY.x - rangeY.y);
         increment = MIN(horizontalRange, verticalRange) / 10.0;
     }
     
@@ -297,7 +297,7 @@ public:
 		{
 			switch (key) 
 			{
-				case OF_KEY_RIGHT:
+				case OFX_UI_KEY_RIGHT:
                 {
                     ofxUIVec3f p = getScaledValue();         
                     p.x+=increment; 
@@ -308,7 +308,7 @@ public:
                 }
 					break;
 					
-				case OF_KEY_UP:
+				case OFX_UI_KEY_UP:
                 {
                     ofxUIVec3f p = getScaledValue();         
                     p.y +=increment; 
@@ -319,7 +319,7 @@ public:
                 }
 					break;
 					
-				case OF_KEY_LEFT:
+				case OFX_UI_KEY_LEFT:
                 {
                     ofxUIVec3f p = getScaledValue();         
                     p.x-=increment; 
@@ -330,7 +330,7 @@ public:
                 }
 					break;
 					
-				case OF_KEY_DOWN:
+				case OFX_UI_KEY_DOWN:
                 {
                     ofxUIVec3f p = getScaledValue();         
                     p.y -=increment; 

@@ -300,27 +300,27 @@ public:
 		{
 			switch (key) 
 			{
-				case OF_KEY_RIGHT:
+				case OFX_UI_KEY_RIGHT:
 					setValueHigh(getScaledValueHigh()+increment); 					
 					setValueLow(getScaledValueLow()+increment); 															
 					triggerEvent(this); 
 					break;
                     
-				case OF_KEY_LEFT:
+				case OFX_UI_KEY_LEFT:
 					setValueHigh(getScaledValueHigh()-increment); 					
 					setValueLow(getScaledValueLow()-increment); 										
 					triggerEvent(this); 					
 					break;
 					
 					
-				case OF_KEY_UP:
+				case OFX_UI_KEY_UP:
 					setValueHigh(getScaledValueHigh()+increment); 
 					setValueLow(getScaledValueLow()-increment); 					
 					triggerEvent(this); 
 					break;
 					
 					
-				case OF_KEY_DOWN:
+				case OFX_UI_KEY_DOWN:
 					setValueHigh(getScaledValueHigh()-increment); 
 					setValueLow(getScaledValueLow()+increment); 					
 					triggerEvent(this); 					

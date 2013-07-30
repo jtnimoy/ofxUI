@@ -56,7 +56,7 @@ public:
         toggleWidth = w;
         toggleHeight = h;
                 
-        ofPoint pos = ofPoint(0,0); 
+        ofxUIPoint pos = ofxUIPoint(0,0); 
         for(int j = 0; j < rows; j++)
         {
             for(int i = 0; i < cols; i++)
@@ -108,7 +108,7 @@ public:
 		float tHeight = rows*(toggles[0]->getRect()->height)+rows*padding;
 
 
-        ofPoint pos = ofPoint(0,0);
+        ofxUIPoint pos = ofxUIPoint(0,0);
         for(int j = 0; j < rows; j++)
         {
             for(int i = 0; i < cols; i++)
@@ -202,7 +202,7 @@ public:
         if(hit)
         {
             bool tv = false;
-            if(ofGetKeyPressed())
+            if(ofxUIGetKeyPressed())
             {
                 tv = true;
             }

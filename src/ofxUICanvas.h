@@ -84,11 +84,11 @@ public:
     
     ofxUICanvas(std::string title) : ofxUIWidget()
     {    
-        rect = new ofxUIRectangle(0, 0, 316, ofxUIGetHeight());        
+        rect = new ofxUIRectangle(0, 0, 316, ofxUIGetHeight());
         init(46, ofxUIGetHeight());
         addWidgetDown(new ofxUILabel(title, OFX_UI_FONT_LARGE));
         addWidgetDown(new ofxUISpacer(0, 20));
-        addWidgetDown(new ofxUIFPSSlider(300, 20, 0, 1000, ofGetFrameRate(), "FPS"));
+        addWidgetDown(new ofxUIFPSSlider(300, 20, 0, 1000, ofxUIGetFrameRate(), "FPS"));
     }
     
     void init(int w, int h, ofxUICanvas *sharedResources = NULL)
@@ -1899,14 +1899,14 @@ public:
         return widget;
     }
 
-    ofxUIBaseDraws *addBaseDraws(string _name, ofBaseDraws *_base, float _w, float _h, bool _showLabel = false)
+    ofxUIBaseDraws *addBaseDraws(string _name, BaseDraws *_base, float _w, float _h, bool _showLabel = false)
     {
         ofxUIBaseDraws* widget = new ofxUIBaseDraws(_w, _h, _base, _name, _showLabel);
         addWidgetPosition(widget, widgetPosition, widgetAlign);
         return widget;
     }
     
-    ofxUIBaseDraws *addBaseDraws(string _name, ofBaseDraws *_base, bool _showLabel = false)
+    ofxUIBaseDraws *addBaseDraws(string _name, BaseDraws *_base, bool _showLabel = false)
     {
         float _w = rect->getWidth()-widgetSpacing*2;
         float _h = _w*(float)_base->getHeight()/(float)_base->getWidth();
@@ -3143,7 +3143,7 @@ public:
         return widgetToReturn;                                         
     }
 	
-	ofEvent<ofxUIEventArgs> newGUIEvent;
+	ofxUIEvent<ofxUIEventArgs> newGUIEvent;
 	
 protected:    
     

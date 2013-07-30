@@ -29,33 +29,33 @@
 class ofxUIBaseDraws : public ofxUIWidgetWithLabel
 {
 public:
-    ofxUIBaseDraws(float x, float y, float w, float h, ofBaseDraws* _image, string _name) : ofxUIWidgetWithLabel()
+    ofxUIBaseDraws(float x, float y, float w, float h, BaseDraws* _image, string _name) : ofxUIWidgetWithLabel()
     {
         rect = new ofxUIRectangle(x,y,w,h); 
         init(w, h, _image, _name); 
     }
     
-    ofxUIBaseDraws(float x, float y, float w, float h, ofBaseDraws* _image, string _name, bool _showLabel) : ofxUIWidgetWithLabel()
+    ofxUIBaseDraws(float x, float y, float w, float h, BaseDraws* _image, string _name, bool _showLabel) : ofxUIWidgetWithLabel()
     {
         rect = new ofxUIRectangle(x,y,w,h); 
         init(w, h, _image, _name); 
         showLabel = _showLabel; 
     }
     
-    ofxUIBaseDraws(float w, float h, ofBaseDraws* _image, string _name) : ofxUIWidgetWithLabel()
+    ofxUIBaseDraws(float w, float h, BaseDraws* _image, string _name) : ofxUIWidgetWithLabel()
     {
         rect = new ofxUIRectangle(0,0,w,h); 
         init(w, h, _image, _name); 
     }    
 
-    ofxUIBaseDraws(float w, float h, ofBaseDraws* _image, string _name, bool _showLabel) : ofxUIWidgetWithLabel()
+    ofxUIBaseDraws(float w, float h, BaseDraws* _image, string _name, bool _showLabel) : ofxUIWidgetWithLabel()
     {
         rect = new ofxUIRectangle(0,0,w,h); 
         init(w, h, _image, _name); 
         showLabel = _showLabel; 
     }    
     
-    void init(float w, float h, ofBaseDraws* _image, string _name)
+    void init(float w, float h, BaseDraws* _image, string _name)
     {
 		name = _name; 				
 		kind = OFX_UI_WIDGET_BASE_DRAWS;
@@ -92,8 +92,8 @@ public:
         {			
 			if(image != NULL)
 			{			   
-				ofFill(); 
-				ofSetColor(255); 		
+				ofxUIFill(); 
+				ofxUISetColor(255); 		
 				image->draw(rect->getX(), rect->getY(), rect->width, rect->height); 
 			}
         }
@@ -110,7 +110,7 @@ public:
 		return label; 
 	}
     
-    void set(ofBaseDraws *_image)
+    void set(BaseDraws *_image)
     {
         image = _image; 
     }
@@ -136,6 +136,6 @@ public:
     
     
 protected:    //inherited: ofxUIRectangle *rect; ofxUIWidget *parent; 
-	ofBaseDraws *image; 
+	BaseDraws *image; 
     bool showLabel; 
 }; 

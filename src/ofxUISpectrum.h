@@ -84,17 +84,17 @@ public:
 			}
             if(buffer != NULL)
             {
-                ofPushMatrix();
-                ofTranslate(rect->getX(), rect->getY()+scale, 0); 
-                ofBeginShape();		
-                ofVertex(0, 0); 
+                ofxUIPushMatrix();
+                ofxUITranslate(rect->getX(), rect->getY()+scale, 0); 
+                ofxUIBeginShape();		
+                ofxUIVertex(0, 0); 
                 for (int i = 0; i < bufferSize; i++)
                 {				
-                    ofVertex(inc*(float)i, ofxUIMap(buffer[i], min, max, 0, -scale, true)); 
+                    ofxUIVertex(inc*(float)i, ofxUIMap(buffer[i], min, max, 0, -scale, true)); 
                 }
-                ofVertex((bufferSize-1)*inc, 0);
-                ofEndShape(true);
-                ofPopMatrix(); 
+                ofxUIVertex((bufferSize-1)*inc, 0);
+                ofxUIEndShape(true);
+                ofxUIPopMatrix(); 
             }
         }
     }
@@ -124,9 +124,9 @@ public:
         return min;
     }
     
-    ofVec2f getMaxAndMind()
+    ofxUIVec2f getMaxAndMind()
     {
-        return ofVec2f(max, min);
+        return ofxUIVec2f(max, min);
     }
     
     void setMaxAndMin(float _max, float _min)

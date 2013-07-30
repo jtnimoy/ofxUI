@@ -55,7 +55,8 @@ public:
         init(w, h, _image, _name); 
         showLabel = _showLabel; 
     }    
-    
+	
+	
     void init(float w, float h, ofImage *_image, string _name)
     {
 		name = string(_name);  				

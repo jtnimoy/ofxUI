@@ -27,6 +27,7 @@
 
 #include "ofxUISlider.h"
 #include "ofxUIRectangle.h"
+#include "ofxUIImage.h"
 
 class ofxUIMultiImageSlider : public ofxUISlider //delete this guy, use image slider instead
 {
@@ -107,16 +108,16 @@ public:
             extension = _pathURL.substr(found);
         }
         
-        track = new ofxUIImage();         //back
+        track = new ofImage();         //back
         track->loadImage(coreURL+"track"+extension);
         
-        progress = new ofxUIImage();      //fill
+        progress = new ofImage();      //fill
         progress->loadImage(coreURL+"progress"+extension);        
         
-        handle = new ofxUIImage();        //handle
+        handle = new ofImage();        //handle
         handle->loadImage(coreURL+"handle"+extension);
         
-        handleDown = new ofxUIImage();    //handleOver State                        
+        handleDown = new ofImage();    //handleOver State                        
         handleDown->loadImage(coreURL+"handledown"+extension);        
         
         if(kind == OFX_UI_WIDGET_MULTIIMAGESLIDER_H)
@@ -314,10 +315,10 @@ public:
     
     
 protected:    //inherited: ofxUIRectangle *rect; ofxUIWidget *parent; 
-    ofxUIImage *track;         //back
-    ofxUIImage *progress;      //fill
-    ofxUIImage *handle;        //handle
-    ofxUIImage *handleDown;    //handleOver State    
+    ofImage *track;         //back
+    ofImage *progress;      //fill
+    ofImage *handle;        //handle
+    ofImage *handleDown;    //handleOver State    
     int handleHalfWidth; 
     int handleHalfHeight; 
     ofxUIRectangle *imageRect;

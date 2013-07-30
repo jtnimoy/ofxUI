@@ -64,7 +64,7 @@ public:
 
 	void update()
 	{
-        setValue(ofGetFrameRate());   
+        setValue(ofxUIGetFrameRate());   
 	}
 	
 }; 

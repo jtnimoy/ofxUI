@@ -30,12 +30,12 @@
 class ofxUI2DGraph : public ofxUIWidget
 {
 public:    
-    ofxUI2DGraph(string _name, ofPoint _rangeX, ofPoint _rangeY, int _bufferSize, float * _xValues, float * _yValues, float w, float h, float x = 0, float y = 0) : ofxUIWidget()
+    ofxUI2DGraph(string _name, ofxUIPoint _rangeX, ofxUIPoint _rangeY, int _bufferSize, float * _xValues, float * _yValues, float w, float h, float x = 0, float y = 0) : ofxUIWidget()
     {
         init(_name, _rangeX, _rangeY, _bufferSize, _xValues, _yValues, w, h, x, y);
     }
         
-    void init(string _name, ofPoint _rangeX, ofPoint _rangeY, float _bufferSize, float * _xValues, float * _yValues, float w, float h, float x = 0, float y = 0)
+    void init(string _name, ofxUIPoint _rangeX, ofxUIPoint _rangeY, float _bufferSize, float * _xValues, float * _yValues, float w, float h, float x = 0, float y = 0)
     {
         rect = new ofxUIRectangle(x,y,w,h);
 		name = string(_name);
@@ -58,32 +58,32 @@ public:
     {
         if(draw_back)
         {
-            ofFill();
-            ofSetColor(color_back);
+            ofxUIFill();
+            ofxUISetColor(color_back);
             rect->draw();
             
-            ofPushMatrix();
-            ofTranslate(rect->getX(), rect->getY(), 0);
+            ofxUIPushMatrix();
+            ofxUITranslate(rect->getX(), rect->getY(), 0);
 
             for(int x = 0; x <= rect->getWidth(); x+=inc)
             {
-                ofLine(x, 0, x, rect->getHeight());   //y
+                ofxUIDrawLine(x, 0, x, rect->getHeight());   //y
             }
             
             for(int y = 0; y <= rect->getHeight(); y+=inc)
             {
-                ofLine(0, y, rect->getWidth(), y);   //x
+                ofxUIDrawLine(0, y, rect->getWidth(), y);   //x
             }
             
-            ofSetLineWidth(2);
-            ofLine(rect->getHalfWidth(), 0, rect->getHalfWidth(), rect->getHeight());   
-            ofLine(0, rect->getHalfHeight(), rect->getWidth(), rect->getHalfHeight());
-            ofPopMatrix(); 
-            ofNoFill();
+            ofxUISetLineWidth(2);
+            ofxUIDrawLine(rect->getHalfWidth(), 0, rect->getHalfWidth(), rect->getHeight());   
+            ofxUIDrawLine(0, rect->getHalfHeight(), rect->getWidth(), rect->getHalfHeight());
+            ofxUIPopMatrix(); 
+            ofxUINoFill();
             rect->draw();
             
-            ofSetLineWidth(1);
-            ofFill();            
+            ofxUISetLineWidth(1);
+            ofxUIFill();            
         }
     }
     
@@ -92,28 +92,28 @@ public:
     {
         if(draw_fill)
         {
-			ofNoFill();
+			ofxUINoFill();
 			if(draw_fill_highlight)
 			{
-				ofSetColor(color_fill_highlight);
+				ofxUISetColor(color_fill_highlight);
 			}
 			else
 			{
-				ofSetColor(color_fill);
+				ofxUISetColor(color_fill);
 			}
             if(xValues != NULL && yValues != NULL)
             {
-                ofPushMatrix(); 
-                ofTranslate(rect->getX(), rect->getY(), 0);
-                ofSetLineWidth(1.5);
-                ofPolyline line;
+                ofxUIPushMatrix(); 
+                ofxUITranslate(rect->getX(), rect->getY(), 0);
+                ofxUISetLineWidth(1.5);
+                ofxUIPolyline line;
                 for(int i =0; i < bufferSize; i++)
                 {
-                    line.addVertex(ofMap(xValues[i], rangeX.x, rangeX.y, 0.0, rect->getWidth(), true), ofMap(yValues[i], rangeY.x, rangeY.y, 0.0, rect->getHeight(), true));
+                    line.addVertex(ofxUIMap(xValues[i], rangeX.x, rangeX.y, 0.0, rect->getWidth(), true), ofxUIMap(yValues[i], rangeY.x, rangeY.y, 0.0, rect->getHeight(), true));
                 }
                 line.draw(); 
-                ofSetLineWidth(1);
-                ofPopMatrix(); 
+                ofxUISetLineWidth(1);
+                ofxUIPopMatrix(); 
             }
         }
     }
@@ -126,7 +126,7 @@ public:
 protected:    //inherited: ofxUIRectangle *rect; ofxUIWidget *parent;
 	float *xValues;
 	float *yValues;
-    ofPoint rangeX, rangeY;
+    ofxUIPoint rangeX, rangeY;
 	float inc;
 	int bufferSize;
 };

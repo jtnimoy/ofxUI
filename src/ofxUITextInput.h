@@ -101,7 +101,7 @@ public:
         }
         if(clicked)
 		{
-            ofNoFill();
+            ofxUINoFill();
             ofxUISetColor(color_outline_highlight);
             rect->draw();
             
@@ -111,7 +111,7 @@ public:
 			label->getRect()->y = ph/2.0 - h/2.0; 
 			
             ofxUIFill(); 
-			ofxUISetColor(label->getColorFillHighlight(), 255.0*fabs(cos(theta))); 
+			ofxUISetColor(label->getColorFillHighlight(), 255.0*fabs(std::cos(theta))); 
 			theta +=0.05; 
 			
             int displayCursorPosition = cursorPosition - firstVisibleCharacterIndex;
@@ -216,12 +216,12 @@ public:
 	
     void keyPressed(int key) 
     {
-    	ofLog(OF_LOG_VERBOSE, "openframeworks Drawnetic ofxUI keyPressed: %i", key);
+    	//ofLog(OFX_UI_LOG_VERBOSE, "openframeworks Drawnetic ofxUI keyPressed: %i", key);
 		if(clicked)            
 		{
             switch (key) 
 			{
-				case OF_KEY_BACKSPACE:
+				case OFX_UI_KEY_BACKSPACE:
 					if (textstring.size() > 0 && cursorPosition > 0)
 					{
                         cursorPosition --;
@@ -234,7 +234,7 @@ public:
 					}
 					break;
 
-                case OF_KEY_DEL:
+                case OFX_UI_KEY_DEL:
 					if (textstring.size() > 0 && cursorPosition < textstring.length())
 					{
                         textstring.erase(cursorPosition, 1);
@@ -242,7 +242,7 @@ public:
 					}
 					break;
 					
-				case OF_KEY_RETURN:
+				case OFX_UI_KEY_RETURN:
 
                     triggerType = OFX_UI_TEXTINPUT_ON_ENTER;
 					triggerEvent(this);
@@ -254,8 +254,8 @@ public:
                     clicked = false;
 					break;
 					
-				case OF_KEY_RIGHT:
-                case OF_KEY_DOWN:
+				case OFX_UI_KEY_RIGHT:
+                case OFX_UI_KEY_DOWN:
                     if(cursorPosition < textstring.length())
                     {
                         cursorPosition ++;
@@ -263,8 +263,8 @@ public:
                     }
 					break;					
                     
-				case OF_KEY_LEFT:
-                case OF_KEY_UP:
+				case OFX_UI_KEY_LEFT:
+                case OFX_UI_KEY_UP:
                     if(cursorPosition > 0)
                     {
                         cursorPosition --;
@@ -272,27 +272,27 @@ public:
                     }
 					break;
                     
-                case OF_KEY_MODIFIER:
-                case OF_KEY_CTRL:
-                case OF_KEY_ALT:
-                case OF_KEY_SHIFT:
-                case OF_KEY_F1:
-                case OF_KEY_F2:
-                case OF_KEY_F3:
-                case OF_KEY_F4:
-                case OF_KEY_F5:
-                case OF_KEY_F6:
-                case OF_KEY_F7:
-                case OF_KEY_F8:
-                case OF_KEY_F9:
-                case OF_KEY_F10:
-                case OF_KEY_F11:
-                case OF_KEY_F12:
-                case OF_KEY_PAGE_UP:
-                case OF_KEY_PAGE_DOWN:
-                case OF_KEY_HOME:
-                case OF_KEY_END:
-                case OF_KEY_INSERT:
+                case OFX_UI_KEY_MODIFIER:
+                case OFX_UI_KEY_CTRL:
+                case OFX_UI_KEY_ALT:
+                case OFX_UI_KEY_SHIFT:
+                case OFX_UI_KEY_F1:
+                case OFX_UI_KEY_F2:
+                case OFX_UI_KEY_F3:
+                case OFX_UI_KEY_F4:
+                case OFX_UI_KEY_F5:
+                case OFX_UI_KEY_F6:
+                case OFX_UI_KEY_F7:
+                case OFX_UI_KEY_F8:
+                case OFX_UI_KEY_F9:
+                case OFX_UI_KEY_F10:
+                case OFX_UI_KEY_F11:
+                case OFX_UI_KEY_F12:
+                case OFX_UI_KEY_PAGE_UP:
+                case OFX_UI_KEY_PAGE_DOWN:
+                case OFX_UI_KEY_HOME:
+                case OFX_UI_KEY_END:
+                case OFX_UI_KEY_INSERT:
                     break;
                     
 				default:
@@ -475,7 +475,7 @@ public:
         }
         
         // we now know how long the string before the label should be, so trim it off
-        displaystring = displaystring.substr(MIN(firstVisibleCharacterIndex, displaystring.length()));
+        displaystring = displaystring.substr(MIN(firstVisibleCharacterIndex, (unsigned int)displaystring.length()));
         
         // trim off the end of the string until it fits
         while(label->getStringWidth(displaystring) > maxWidth && displaystring.length() > 0)
